@@ -18,48 +18,50 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className="w-full px-6 py-4 border-b border-gray-100 bg-white flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/logotype.png"
-            alt="Estatery logo"
-            width={160}
-            height={32}
-            priority
-          />
+<header className="w-full px-6 py-4 border-b border-gray-100 bg-white">
+  <div className="mx-auto w-full max-w-[1440px] flex justify-between items-center">
+    {/* Logo */}
+    <Link href="/" className="flex items-center gap-2">
+      <Image
+        src="/logotype.png"
+        alt="Estatery logo"
+        width={160}
+        height={32}
+        priority
+      />
+    </Link>
+
+    {/* Desktop nav */}
+    <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-800">
+      {navLinks.map(({ name, href }) => (
+        <Link key={name} href={href}>
+          {name}
         </Link>
+      ))}
+    </nav>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-800">
-          {navLinks.map(({ name, href }) => (
-            <Link key={name} href={href}>
-              {name}
-            </Link>
-          ))}
-        </nav>
+    {/* Desktop buttons */}
+    <div className="hidden md:flex gap-2">
+      <Link
+        href="#"
+        className="px-4 py-2 border border-gray-300 rounded-md text-sm font-semibold hover:border-gray-500 transition"
+      >
+        Login
+      </Link>
+      <Link
+        href="#"
+        className="px-4 py-2 rounded-md text-sm font-semibold text-white bg-[var(--color-accent)] hover:opacity-90 transition"
+      >
+        Sign up
+      </Link>
+    </div>
 
-        {/* Desktop buttons */}
-        <div className="hidden md:flex gap-2">
-          <Link
-            href="#"
-            className="px-4 py-2 border border-gray-300 rounded-md text-sm font-semibold hover:border-gray-500 transition"
-          >
-            Login
-          </Link>
-          <Link
-            href="#"
-            className="px-4 py-2 rounded-md text-sm font-semibold text-white bg-[var(--color-accent)] hover:opacity-90 transition"
-          >
-            Sign up
-          </Link>
-        </div>
-
-        {/* Mobile menu toggle */}
-        <button onClick={() => setMenuOpen(true)} className="md:hidden">
-          <Menu size={24} />
-        </button>
-      </header>
+    {/* Mobile menu toggle */}
+    <button onClick={() => setMenuOpen(true)} className="md:hidden">
+      <Menu size={24} />
+    </button>
+  </div>
+</header>
 
       {/* Mobile menu overlay */}
 

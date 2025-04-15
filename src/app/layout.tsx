@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={jakarta.variable}>
-      <body className="font-[var(--font-jakarta)]">
+      <body className="max-w-[1440px] mx-auto px-4 md:px-8 font-[var(--font-jakarta)]">
         <Navbar />
         {children}
       </body>

@@ -72,14 +72,15 @@ const PropertiesSection = () => {
   };
 
   return (
-    <section className="w-full px-4 md:px-8 lg:px-16 py-16">
+    <section className="relative z-10 w-full bg-white px-4 md:px-8 lg:px-16 py-16">
       {/* Tabs */}
       <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}      
-      
-      className="flex justify-center mb-10">
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="flex justify-center mb-10"
+      >
         <div className="flex bg-[#f7f6ff] p-1 rounded-xl gap-1 shadow-sm">
           {['houses', 'apartments'].map((tab) => {
             const isActive = activeTab === tab;
@@ -103,12 +104,12 @@ const PropertiesSection = () => {
 
       {/* Heading */}
       <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl mx-auto text-center mb-12"
-          >
-
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-2xl mx-auto text-center mb-12"
+      >
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           We make it easy for houses and apartments.
         </h2>
@@ -118,60 +119,71 @@ const PropertiesSection = () => {
         </p>
       </motion.div>
 
-      {/* Properties Grid with animation */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {properties[activeTab].map((property) => (
-            <div
-              key={property.id}
-              className="rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all border border-gray-100"
+      {/* Slider on mobile, grid on larger screens */}
+      <div className="relative z-10 w-full">
+        <div className="overflow-x-auto px-4 sm:px-0 pb-12">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 w-max sm:w-auto"
             >
-              <div className="relative w-full h-48">
-                <Image
-                  src={property.image}
-                  alt={property.title}
-                  fill
-                  className="object-cover w-full h-full rounded-t-2xl"
-                />
-              </div>
-              <div className="relative -mt-4 px-5">
-                <div className="inline-flex items-center gap-1 bg-[var(--color-accent)] text-white text-xs font-semibold px-3 py-1 rounded-md shadow-md rounded-br-[4px] before:absolute before:-left-2 before:top-0 before:bottom-0 before:w-2 before:bg-[var(--color-accent)] before:clip-path-[polygon(100%_0,0_100%,100%_100%)] relative">
-                  <Sparkles className="w-3.5 h-3.5" /> {property.tag}
+              {properties[activeTab].map((property) => (
+                <div
+                  key={property.id}
+                  className="rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all border border-gray-100 min-w-[300px] sm:min-w-0"
+                >
+                  {/* IMAGE */}
+                  <div className="relative w-full h-48">
+                    <Image
+                      src={property.image}
+                      alt={property.title}
+                      fill
+                      className="object-cover w-full h-full rounded-t-2xl"
+                    />
+                  </div>
+
+                  {/* BADGE */}
+                  <div className="relative -mt-4 px-5 overflow-visible z-10">
+                  <div className="absolute -left-3 top-0 inline-flex items-center gap-2 pl-3 pr-3 py-1 bg-[var(--color-accent)] text-white text-xs font-semibold rounded-md shadow-md z-20">
+  <Sparkles className="w-3.5 h-3.5" />
+  <span className="leading-none">{property.tag}</span>
+</div>
+
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="p-5 pt-8">
+                    <div className="flex items-center justify-between mb-4">
+                      <p className="text-xl font-semibold text-[var(--color-accent)] tracking-tight leading-none">
+                        {property.price}
+                        <span className="text-sm text-gray-500 font-normal"> /month</span>
+                      </p>
+                      <button
+                        onClick={() => toggleLike(property.id)}
+                        aria-pressed={likedIds.includes(property.id)}
+                        className={clsx(
+                          'group size-9 flex items-center justify-center rounded-full border transition-all',
+                          likedIds.includes(property.id)
+                            ? 'bg-[var(--color-accent)] text-white border-transparent'
+                            : 'border-gray-200 text-[var(--color-accent)] hover:border-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40 active:bg-[var(--color-accent)] active:text-white'
+                        )}
+                      >
+                        <Heart className="size-4 stroke-[2px] transition-all" />
+                      </button>
+                    </div>
+                    <p className="text-base font-semibold text-black">{property.title}</p>
+                    <p className="text-sm text-gray-500 truncate">{property.location}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="p-5 pt-4">
-                <div className="flex items-center justify-between mb-2">
-                  <p className="text-xl font-semibold text-[var(--color-accent)] tracking-tight">
-                    {property.price}
-                    <span className="text-sm text-gray-500 font-normal"> /month</span>
-                  </p>
-                  <button
-                    onClick={() => toggleLike(property.id)}
-                    aria-pressed={likedIds.includes(property.id)}
-                    className={clsx(
-                      'group size-9 flex items-center justify-center rounded-full border transition-all',
-                      likedIds.includes(property.id)
-                        ? 'bg-[var(--color-accent)] text-white border-transparent'
-                        : 'border-gray-200 text-[var(--color-accent)] hover:border-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40 active:bg-[var(--color-accent)] active:text-white'
-                    )}
-                  >
-                    <Heart className="size-4 stroke-[2px] transition-all" />
-                  </button>
-                </div>
-                <p className="text-base font-semibold text-black">{property.title}</p>
-                <p className="text-sm text-gray-500 truncate">{property.location}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </AnimatePresence>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
 };
