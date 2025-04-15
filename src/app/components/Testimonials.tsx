@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const testimonials = [
   {
@@ -27,6 +28,7 @@ const testimonials = [
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,7 +38,13 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="w-full bg-gradient-to-b from-white to-[#f9f5ff] py-20 px-4 text-center">
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, x: -100 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="w-full bg-gradient-to-b from-white to-[#f9f5ff] py-20 px-4 text-center"
+    >
       <h2 className="text-3xl font-bold mb-2 text-black">Testimonials</h2>
       <p className="text-gray-500 mb-10 max-w-md mx-auto text-sm">
         See what our property managers, landlords, and tenants have to say
@@ -56,7 +64,8 @@ const Testimonials = () => {
               “{testimonials[index].text}”
             </p>
             <p className="font-semibold text-black">
-              {testimonials[index].name}, <span className="text-gray-500 font-normal">{testimonials[index].role}</span>
+              {testimonials[index].name},{' '}
+              <span className="text-gray-500 font-normal">{testimonials[index].role}</span>
             </p>
           </motion.div>
         </AnimatePresence>
@@ -107,7 +116,7 @@ const Testimonials = () => {
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

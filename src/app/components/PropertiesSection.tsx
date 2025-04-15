@@ -74,7 +74,12 @@ const PropertiesSection = () => {
   return (
     <section className="w-full px-4 md:px-8 lg:px-16 py-16">
       {/* Tabs */}
-      <div className="flex justify-center mb-10">
+      <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}      
+      
+      className="flex justify-center mb-10">
         <div className="flex bg-[#f7f6ff] p-1 rounded-xl gap-1 shadow-sm">
           {['houses', 'apartments'].map((tab) => {
             const isActive = activeTab === tab;
@@ -94,10 +99,16 @@ const PropertiesSection = () => {
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
       {/* Heading */}
-      <div className="max-w-2xl mx-auto text-center mb-12">
+      <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl mx-auto text-center mb-12"
+          >
+
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           We make it easy for houses and apartments.
         </h2>
@@ -105,7 +116,7 @@ const PropertiesSection = () => {
           Whether it’s selling your current home, getting financing, or buying a new home, we make it
           easy and efficient. The best part? You’ll save a bunch of money and time with our services.
         </p>
-      </div>
+      </motion.div>
 
       {/* Properties Grid with animation */}
       <AnimatePresence mode="wait">

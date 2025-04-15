@@ -2,8 +2,14 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
 
 export const Hero = () => {
+  const [mapRef, mapInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
   return (
     <section className="relative w-full min-h-[70vh] overflow-hidden">
       <div className="flex flex-col md:flex-row w-full h-full">
@@ -42,48 +48,50 @@ export const Hero = () => {
         </div>
 
         {/* RIGHT SIDE – mapa + karta */}
-<div className="relative w-full md:w-[40%] h-[420px] md:h-[70vh] flex items-end md:block px-6 md:px-0">
-{/* MAPA */}
-<div className="absolute inset-0 z-0 flex justify-center items-start md:block">
-  <div className="w-[90%] h-full bg-white rounded-2xl overflow-hidden md:w-full md:rounded-none">
-    <Image
-      src="/background_image.png"
-      alt="Map Background"
-      fill
-      className="object-cover"
-      priority
-    />
-  </div>
-</div>
+        <div className="relative w-full md:w-[40%] h-[420px] md:h-[70vh] flex items-end md:block px-6 md:px-0">
+          {/* MAPA */}
+          <motion.div
+            ref={mapRef}
+            initial={{ x: 100, opacity: 0 }}
+            animate={mapInView ? { x: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="absolute inset-0 z-0 flex justify-center items-start md:block"
+          >
+            <div className="w-[90%] h-full bg-white rounded-2xl overflow-hidden md:w-full md:rounded-none">
+              <Image
+                src="/background_image.png"
+                alt="Map Background"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
 
-  {/* KARTA */}
-  <motion.div
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.7, delay: 0.4 }}
-    className="relative z-10 w-full max-w-[320px] bg-white rounded-2xl shadow-2xl md:rounded-t-2xl md:absolute md:top-1/2 md:left-0 md:-translate-x-[20%] md:-translate-y-1/2"
-    style={{
-      marginLeft: undefined,
-      marginBottom: '5rem',
-    }}
-  >
-    <Image
-      src="/house.png"
-      alt="House"
-      width={320}
-      height={160}
-      className="rounded-t-2xl object-cover w-full h-40"
-    />
-    <div className="p-4">
-      <p className="text-[var(--color-accent)] font-semibold text-lg">
-        $2,700 <span className="text-sm font-normal text-gray-600">/month</span>
-      </p>
-      <p className="text-lg font-semibold text-black">Beverly Springfield</p>
-      <p className="text-sm text-gray-500">2821 Lake Sevilla, Palm Harbor, TX</p>
-    </div>
-  </motion.div>
-</div>
-
+          {/* KARTA */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="relative z-10 w-full max-w-[320px] bg-white rounded-2xl shadow-2xl md:rounded-t-2xl md:absolute md:top-1/2 md:left-0 md:-translate-x-[20%] md:-translate-y-1/2"
+            style={{ marginBottom: '5rem' }}
+          >
+            <Image
+              src="/house.png"
+              alt="House"
+              width={320}
+              height={160}
+              className="rounded-t-2xl object-cover w-full h-40"
+            />
+            <div className="p-4">
+              <p className="text-[var(--color-accent)] font-semibold text-lg">
+                $2,700 <span className="text-sm font-normal text-gray-600">/month</span>
+              </p>
+              <p className="text-lg font-semibold text-black">Beverly Springfield</p>
+              <p className="text-sm text-gray-500">2821 Lake Sevilla, Palm Harbor, TX</p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
