@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="w-full bg-white text-gray-500 text-sm">
       <div className="max-w-7xl mx-auto px-6 py-10">
@@ -54,3 +54,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

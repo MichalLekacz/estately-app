@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
-export const Hero = () => {
+const Hero = () => {
   const [mapRef, mapInView] = useInView({
     triggerOnce: true,
     threshold: 0.3,
@@ -109,3 +109,5 @@ export const Hero = () => {
     </section>
   );
 };
+
+export default Hero;
