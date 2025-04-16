@@ -16,7 +16,7 @@ export const Hero = () => {
         {/* LEFT SIDE – tekst + statystyki */}
         <div className="relative w-full md:w-[60%] flex flex-col justify-center px-6 md:px-20 bg-white overflow-hidden py-12 md:py-0">
           {/* Gradient */}
-          <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_left,_#e9e6ff_0%,_white_70%)]" />
+          <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_30%_100%,_rgba(241,240,255,0.6)_0%,_transparent_60%)]" />
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -59,7 +59,7 @@ export const Hero = () => {
           >
             <div className="w-[90%] h-full bg-white rounded-2xl overflow-hidden md:w-full md:rounded-none">
               <Image
-                src="/background_image.png"
+                src="/map.svg"
                 alt="Map Background"
                 fill
                 className="object-cover"

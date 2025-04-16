@@ -27,3 +27,7 @@ body {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Edge */
 }
+
+.clip-diagonal-left {
+  clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+}

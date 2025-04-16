@@ -23,7 +23,7 @@ export const Navbar = () => {
     {/* Logo */}
     <Link href="/" className="flex items-center gap-2">
       <Image
-        src="/logotype.png"
+        src="/logotype.svg"
         alt="Estatery logo"
         width={160}
         height={32}
