@@ -46,15 +46,26 @@ export const Navbar = () => {
 
           {/* Desktop buttons */}
           <div className="hidden md:flex gap-2">
+            {/* Secondary Button */}
             <Link
               href="#"
-              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-semibold hover:border-gray-500 transition"
+              className="px-4 py-2 rounded-md text-sm font-semibold border border-gray-300 text-black transition-all
+                hover:bg-white hover:border-[var(--color-accent)]
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50
+                active:ring-2 active:ring-[var(--color-accent)]
+                disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Login
             </Link>
+
+            {/* Primary Button */}
             <Link
               href="#"
-              className="px-4 py-2 rounded-md text-sm font-semibold text-white bg-[var(--color-accent)] hover:opacity-90 transition"
+              className="px-4 py-2 rounded-md text-sm font-semibold text-white bg-[var(--color-accent)] transition-all
+                hover:bg-[var(--color-accent)]/90
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50
+                active:bg-[var(--color-accent)] active:scale-[0.98]
+                disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
               Sign up
             </Link>
@@ -90,13 +101,15 @@ export const Navbar = () => {
           <div className="flex flex-col gap-4">
             <Link
               href="#"
-              className="w-full border border-gray-300 rounded-md py-2 text-sm font-semibold text-center hover:bg-gray-100 transition"
+              className="w-full border border-gray-300 rounded-md py-2 text-sm font-semibold text-center transition
+                hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40"
             >
               Login
             </Link>
             <Link
               href="#"
-              className="w-full bg-[var(--color-accent)] text-white rounded-md py-2 text-sm font-semibold text-center hover:opacity-90 transition"
+              className="w-full bg-[var(--color-accent)] text-white rounded-md py-2 text-sm font-semibold text-center transition
+                hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40"
             >
               Sign up
             </Link>
