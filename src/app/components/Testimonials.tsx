@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const testimonials = [
   {
-    name: 'Mira Culos',
-    role: 'Renter',
-    avatar: '/avatar1.png',
+    name: "Mira Culos",
+    role: "Renter",
+    avatar: "/avatar1.png",
     text: `Estatery is the platform I go to on almost a daily basis for 2nd home and vacation condo shopping, or to just look at dream homes in new areas. Thanks for fun home shopping and comparative analyzing, Estatery!`,
   },
   {
-    name: 'Mark Brown',
-    role: 'Renter',
-    avatar: '/avatar2.png',
+    name: "Mark Brown",
+    role: "Renter",
+    avatar: "/avatar2.png",
     text: `I check Estatery almost every day — whether I'm seriously house hunting or just daydreaming about future getaways. It makes exploring new locations and comparing properties incredibly easy and enjoyable.`,
   },
   {
-    name: 'Jake White',
-    role: 'Renter',
-    avatar: '/avatar3.png',
+    name: "Jake White",
+    role: "Renter",
+    avatar: "/avatar3.png",
     text: `Estatery turns home shopping into a daily delight. Whether I'm planning for the future or just exploring what's out there, I always find something exciting and new.`,
   },
 ];
@@ -42,7 +42,7 @@ const Testimonials = () => {
       ref={ref}
       initial={{ opacity: 0, x: -100 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className="w-full bg-gradient-to-b from-white to-[#f9f5ff] py-20 px-4 text-center"
     >
       <h2 className="text-3xl font-bold mb-2 text-black">Testimonials</h2>
@@ -64,8 +64,10 @@ const Testimonials = () => {
               “{testimonials[index].text}”
             </p>
             <p className="font-semibold text-black">
-              {testimonials[index].name},{' '}
-              <span className="text-gray-500 font-normal">{testimonials[index].role}</span>
+              {testimonials[index].name},{" "}
+              <span className="text-gray-500 font-normal">
+                {testimonials[index].role}
+              </span>
             </p>
           </motion.div>
         </AnimatePresence>
@@ -99,7 +101,7 @@ const Testimonials = () => {
                     strokeDasharray="100"
                     strokeDashoffset="100"
                     animate={{ strokeDashoffset: 0 }}
-                    transition={{ duration: 5, ease: 'linear' }}
+                    transition={{ duration: 5, ease: "linear" }}
                   />
                 )}
               </svg>

@@ -1,68 +1,68 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Heart, Sparkles } from 'lucide-react';
-import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from "react";
+import Image from "next/image";
+import { Heart, Sparkles } from "lucide-react";
+import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 
 const properties = {
   houses: [
     {
       id: 1,
-      title: 'Palm Harbor',
-      price: '$3,440',
-      location: '2699 Green Valley, Highland Lake, FL',
-      image: '/house1.png',
-      tag: 'HOUSE',
+      title: "Palm Harbor",
+      price: "$3,440",
+      location: "2699 Green Valley, Highland Lake, FL",
+      image: "/house1.png",
+      tag: "HOUSE",
     },
     {
       id: 2,
-      title: 'St. Crystal',
-      price: '$6,550',
-      location: '210 US Highway, Highland Lake, FL',
-      image: '/house2.png',
-      tag: 'HOUSE',
+      title: "St. Crystal",
+      price: "$6,550",
+      location: "210 US Highway, Highland Lake, FL",
+      image: "/house2.png",
+      tag: "HOUSE",
     },
     {
       id: 3,
-      title: 'Faulkner Ave',
-      price: '$4,950',
-      location: '909 Woodland St, Michigan, IN',
-      image: '/house3.png',
-      tag: 'HOUSE',
+      title: "Faulkner Ave",
+      price: "$4,950",
+      location: "909 Woodland St, Michigan, IN",
+      image: "/house3.png",
+      tag: "HOUSE",
     },
   ],
   apartments: [
     {
       id: 4,
-      title: 'Tarpon Bay',
-      price: '$2,140',
-      location: '103 Lake Shores, Michigan, IN',
-      image: '/apt1.png',
-      tag: 'APARTMENTS',
+      title: "Tarpon Bay",
+      price: "$2,140",
+      location: "103 Lake Shores, Michigan, IN",
+      image: "/apt1.png",
+      tag: "APARTMENTS",
     },
     {
       id: 5,
-      title: 'Cove Red',
-      price: '$1,450',
-      location: '243 Curlew Road, Palm Harbor, TX',
-      image: '/apt2.png',
-      tag: 'APARTMENTS',
+      title: "Cove Red",
+      price: "$1,450",
+      location: "243 Curlew Road, Palm Harbor, TX",
+      image: "/apt2.png",
+      tag: "APARTMENTS",
     },
     {
       id: 6,
-      title: 'Beverly Springfield',
-      price: '$3,850',
-      location: '2821 Lake Sevilla, Palm Harbor, TX',
-      image: '/apt3.png',
-      tag: 'APARTMENTS',
+      title: "Beverly Springfield",
+      price: "$3,850",
+      location: "2821 Lake Sevilla, Palm Harbor, TX",
+      image: "/apt3.png",
+      tag: "APARTMENTS",
     },
   ],
 };
 
 const PropertiesSection = () => {
-  const [activeTab, setActiveTab] = useState<'houses' | 'apartments'>('houses');
+  const [activeTab, setActiveTab] = useState<"houses" | "apartments">("houses");
   const [likedIds, setLikedIds] = useState<number[]>([]);
 
   const toggleLike = (id: number) => {
@@ -82,17 +82,17 @@ const PropertiesSection = () => {
         className="flex justify-center mb-10"
       >
         <div className="flex bg-[#f7f6ff] p-1 rounded-xl gap-1 shadow-sm">
-          {['houses', 'apartments'].map((tab) => {
+          {["houses", "apartments"].map((tab) => {
             const isActive = activeTab === tab;
             return (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab as 'houses' | 'apartments')}
+                onClick={() => setActiveTab(tab as "houses" | "apartments")}
                 className={clsx(
-                  'px-5 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40',
+                  "px-5 py-2 rounded-lg text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40",
                   isActive
-                    ? 'bg-white text-[var(--color-accent)] shadow ring-1 ring-[var(--color-accent)]'
-                    : 'text-gray-500 hover:text-[var(--color-accent)] hover:bg-white'
+                    ? "bg-white text-[var(--color-accent)] shadow ring-1 ring-[var(--color-accent)]"
+                    : "text-gray-500 hover:text-[var(--color-accent)] hover:bg-white"
                 )}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -114,8 +114,9 @@ const PropertiesSection = () => {
           We make it easy for houses and apartments.
         </h2>
         <p className="text-gray-600 text-sm">
-          Whether it’s selling your current home, getting financing, or buying a new home, we make it
-          easy and efficient. The best part? You’ll save a bunch of money and time with our services.
+          Whether it’s selling your current home, getting financing, or buying a
+          new home, we make it easy and efficient. The best part? You’ll save a
+          bunch of money and time with our services.
         </p>
       </motion.div>
 
@@ -148,11 +149,10 @@ const PropertiesSection = () => {
 
                   {/* BADGE */}
                   <div className="relative -mt-4 px-5 overflow-visible z-10">
-                  <div className="absolute -left-3 top-0 inline-flex items-center gap-2 pl-3 pr-3 py-1 bg-[var(--color-accent)] text-white text-xs font-semibold rounded-md shadow-md z-20">
-  <Sparkles className="w-3.5 h-3.5" />
-  <span className="leading-none">{property.tag}</span>
-</div>
-
+                    <div className="absolute -left-3 top-0 inline-flex items-center gap-2 pl-3 pr-3 py-1 bg-[var(--color-accent)] text-white text-xs font-semibold rounded-md shadow-md z-20">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span className="leading-none">{property.tag}</span>
+                    </div>
                   </div>
 
                   {/* CONTENT */}
@@ -160,23 +160,30 @@ const PropertiesSection = () => {
                     <div className="flex items-center justify-between mb-4">
                       <p className="text-xl font-semibold text-[var(--color-accent)] tracking-tight leading-none">
                         {property.price}
-                        <span className="text-sm text-gray-500 font-normal"> /month</span>
+                        <span className="text-sm text-gray-500 font-normal">
+                          {" "}
+                          /month
+                        </span>
                       </p>
                       <button
                         onClick={() => toggleLike(property.id)}
                         aria-pressed={likedIds.includes(property.id)}
                         className={clsx(
-                          'group size-9 flex items-center justify-center rounded-full border transition-all',
+                          "group size-9 flex items-center justify-center rounded-full border transition-all",
                           likedIds.includes(property.id)
-                            ? 'bg-[var(--color-accent)] text-white border-transparent'
-                            : 'border-gray-200 text-[var(--color-accent)] hover:border-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40 active:bg-[var(--color-accent)] active:text-white'
+                            ? "bg-[var(--color-accent)] text-white border-transparent"
+                            : "border-gray-200 text-[var(--color-accent)] hover:border-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/40 active:bg-[var(--color-accent)] active:text-white"
                         )}
                       >
                         <Heart className="size-4 stroke-[2px] transition-all" />
                       </button>
                     </div>
-                    <p className="text-base font-semibold text-black">{property.title}</p>
-                    <p className="text-sm text-gray-500 truncate">{property.location}</p>
+                    <p className="text-base font-semibold text-black">
+                      {property.title}
+                    </p>
+                    <p className="text-sm text-gray-500 truncate">
+                      {property.location}
+                    </p>
                   </div>
                 </div>
               ))}

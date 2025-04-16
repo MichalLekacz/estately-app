@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import Image from "next/image";
+import Link from "next/link";
+import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -12,7 +12,7 @@ export const Footer = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logotype.png"
+              src="/logotype.svg"
               alt="Estatery"
               width={120}
               height={32}
@@ -36,10 +36,18 @@ export const Footer = () => {
           <p>©2025 Estatery. All rights reserved</p>
 
           <div className="flex items-center gap-5 text-gray-400">
-            <Link href="#" aria-label="Facebook"><Facebook size={18} /></Link>
-            <Link href="#" aria-label="Instagram"><Instagram size={18} /></Link>
-            <Link href="#" aria-label="Twitter"><Twitter size={18} /></Link>
-            <Link href="#" aria-label="LinkedIn"><Linkedin size={18} /></Link>
+            <Link href="#" aria-label="Facebook">
+              <Facebook size={18} />
+            </Link>
+            <Link href="#" aria-label="Instagram">
+              <Instagram size={18} />
+            </Link>
+            <Link href="#" aria-label="Twitter">
+              <Twitter size={18} />
+            </Link>
+            <Link href="#" aria-label="LinkedIn">
+              <Linkedin size={18} />
+            </Link>
           </div>
         </div>
       </div>

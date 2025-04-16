@@ -2,9 +2,8 @@
 
 @theme {
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
-  --color-accent: #7065F0;
+  --color-accent: #7065f0;
 }
-
 
 @theme inline {
   --color-background: var(--background);

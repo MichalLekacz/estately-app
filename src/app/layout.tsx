@@ -1,19 +1,23 @@
-import './globals.css';
-import { Plus_Jakarta_Sans } from 'next/font/google';
-import { Navbar } from '../app/components/Navbar';
+import "./globals.css";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import { Navbar } from "../app/components/Navbar";
 
 const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-jakarta',
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jakarta",
 });
 
 export const metadata = {
-  title: 'Estatery',
-  description: 'Buy, rent or sell your property easily',
+  title: "Estatery",
+  description: "Buy, rent or sell your property easily",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={jakarta.variable}>
       <body className="max-w-[1440px] mx-auto px-4 md:px-8 font-[var(--font-jakarta)]">
